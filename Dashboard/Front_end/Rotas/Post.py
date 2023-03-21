@@ -85,7 +85,7 @@ def init_App(App):
        
         Producao.post_Production(material,mat_id)
 
-        return  redirect(url_for('index',formInicioProducao ='none',formFimProducao ='block',status = '1'))
+        return  redirect(url_for('index',formInicioProducao ='none',formFimProducao ='block',ultimasProducao ='none',status = '1'))
     
 
     @App.route('/dashboard/delete_producao',methods=["POST"])
