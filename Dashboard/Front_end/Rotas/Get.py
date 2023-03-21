@@ -21,7 +21,7 @@ def init_App(App):
             user_dados = session['userdados']
             
             status = request.args.get('status')  
-
+            caixa = [1]
             if status == '1':
                 formInicioProducao= request.args.get('formInicioProducao')
                 formFimProducao= request.args.get('formFimProducao')
@@ -38,7 +38,7 @@ def init_App(App):
             for x in range(iteracao):
                     val.append(valores[x])
             
-            return render_template('index.html',user_nome=user_dados[0]['nome'],img_nome = user_dados[0]['img_nome'],user_tipo = user_dados[0]['tipo'],valores=val, formInicioProducao = formInicioProducao, formFimProducao = formFimProducao)
+            return render_template('index.html',user_nome=user_dados[0]['nome'],img_nome = user_dados[0]['img_nome'],user_tipo = user_dados[0]['tipo'],valores=val, formInicioProducao = formInicioProducao, formFimProducao = formFimProducao,caixa = caixa)
         else:
             return redirect(url_for('login'))
         

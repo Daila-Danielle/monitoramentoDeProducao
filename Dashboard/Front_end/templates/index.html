@@ -6,6 +6,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="/static/script.js"></script>
         <title>DashBoard</title>
+        <style>
+          .form-control:disabled{
+            background-color: black;
+            border: none;
+          }
+        </style>
     </head>
     <body style="background-color: black; color: rgb(255, 255, 255);">
         <div class="d-flex flex-column flex-shrink-0 p-1 " style="width: 15%; height: 100% ; position:absolute; background-color: rgba(0, 0, 0, 0.842);">
@@ -142,30 +148,87 @@
                       </form> 
                     </div> 
 
-                    <div class="table-responsive" id="producao" style="position:absolute;left:60% ;top: 10%; width:550px ; display: {{formFimProducao}}; ">
-                      <h3>Em produção</h3>
-                      <table class="table table table-striped table-secondary">
-                        <thead >
-                          <tr>
-                            <th scope="col">Id produção</th>
-                            <th scope="col">Data e Hora de Inicio</th>
-                            <th scope="col">Ao vivo</th>
-                          </tr>
-                        </thead>  
-                        <tbody >
-                          {%for producao in valores %}
-                            <tr>
-                              <td>{{producao["id_prod"]}}</td> 
-                              <td>{{producao["inicio"]}}</td>
-                              <td >{{producao["fim"]}}</td> 
-                            </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table> 
+                    <div class="modal-body" id="producao" style="position:absolute;left:40% ;top: 6%; width:450px ; display: {{formFimProducao}}; color:black ">
+                      <center><h2 style="color: aliceblue;">Em produção</h2></center>
+<br>
+                      <div class="row">
+                        <div class="form-floating  col-md-4 " style="background-color: black" >
+                          <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 60px;">
+                          </center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[0]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 60px;">
+                          </center>
+                              
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"  disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"  disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"   disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"   disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"   disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"   disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"   disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+
+                        <div class="form-floating  col-md-4 " >
+                          <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 60px;"></center>
+                              <div class="form-floating mb-4 mt-3">
+                                <input type="number" class="form-control rounded-4"   disabled>
+                                <label>Quantidade</label>
+                              </div>
+                        </div>
+                      </div>
+
                       <a href= "{{url_for('finalizar_prod')}}"><button class="w-100 mb-3 btn btn-lg rounded-4 btn-danger" type="button"  >Finalizar Produção</button></a>
                     </div>
 
-                    <div class="table-responsive" style="position:absolute;left:60% ;top: 45%; width:550px ;display: none;  ">
+                    <div class="table-responsive" id="ultimasProducao" style="position:absolute;left:60% ;top: 45%; width:550px ;display: none;  ">
                       <h3>Ultimas produções</h3>
                       <table class="table table table-striped table-secondary">
                         <thead >
