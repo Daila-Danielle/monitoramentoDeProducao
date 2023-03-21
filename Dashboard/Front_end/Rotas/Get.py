@@ -5,6 +5,7 @@ from Apis import Dados_cadastro,Dados_producao,Dados_producao_detalhar,Producao
 # gera a instancia do app para não causar circular inport
 formInicioProducao = 'block'
 formFimProducao ='none'
+ultimasProducao = 'block'
 def init_App(App):
 
 #rotas tipo GET
@@ -25,9 +26,11 @@ def init_App(App):
             if status == '1':
                 formInicioProducao= request.args.get('formInicioProducao')
                 formFimProducao= request.args.get('formFimProducao')
+                ultimasProducao= request.args.get('ultimasProducao')
             else:
                 formInicioProducao ='block'
                 formFimProducao ='none'
+                ultimasProducao ='block'
             status = '0'
             valores=Dados_producao.get_Dados_producao("","")
 
@@ -38,7 +41,7 @@ def init_App(App):
             for x in range(iteracao):
                     val.append(valores[x])
             
-            return render_template('index.html',user_nome=user_dados[0]['nome'],img_nome = user_dados[0]['img_nome'],user_tipo = user_dados[0]['tipo'],valores=val, formInicioProducao = formInicioProducao, formFimProducao = formFimProducao,caixa = caixa)
+            return render_template('index.html',user_nome=user_dados[0]['nome'],img_nome = user_dados[0]['img_nome'],user_tipo = user_dados[0]['tipo'],valores=val, formInicioProducao = formInicioProducao, formFimProducao = formFimProducao,ultimasProducao = ultimasProducao,caixa = caixa)
         else:
             return redirect(url_for('login'))
         
