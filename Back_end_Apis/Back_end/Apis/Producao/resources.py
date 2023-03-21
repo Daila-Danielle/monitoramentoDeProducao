@@ -49,8 +49,8 @@ class Producao (Resource):
 
         for x in range(9):
             Unity_Write(f"%MW10"+str(x),int(request.json["materiais"][x]))
-
-
+        Unity_Write("%MW200",1)
+        Unity_Write("%MW200",0)
 
         return 'Producao iniciada com sucesso',201
     
@@ -82,7 +82,6 @@ class Producao (Resource):
             id_mat=request.json["id_mat"]
            
             valores=(qtd,Curent_prodID,id_mat)
-            print(valores)
              
             sql = "UPDATE materiais_producao SET quantidade = %s WHERE id_prod = %s AND id_mat = %s"
             Database.execute(sql,valores)

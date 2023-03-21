@@ -5,11 +5,9 @@ from flask import Flask
 import threading
 import configuration
 
-
 App = Flask(__name__)
 configuration.init_app(App)
 configuration.load_extensions(App)
-
 
 def M340():
     ton1=Timer()
@@ -17,7 +15,7 @@ def M340():
         ton1.Ton(5)
         if ton1.Q:
             pass
-            #Unity_Read()
+            print(Unity_Read("%MW300",8))
 
 
         
