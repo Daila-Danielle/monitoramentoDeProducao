@@ -25,7 +25,7 @@ threading.Thread(target=M340).start()
 
 
 
-App.run(host='0.0.0.0',port=5001)
+App.run(port=5001)
 
 
 
