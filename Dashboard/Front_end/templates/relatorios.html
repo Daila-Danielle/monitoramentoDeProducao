@@ -1,8 +1,28 @@
 {% extends 'index.html'%}
 <div >
   {% block conteudo %}
+  <div class=" bg-dark" style="width:85%;height:5%; left: 15% ;top:0%; position:absolute;" >
+      
+    <div class="modal-body p-2 ">
+      <form method="post" action="filtar">
+        <div class="row" >
+          <div class="col-md-3 form-floating " style="">
+            <input type="datetime-local" class="form-control rounded-4"  name="dt_inicial" required>
+            <label class="m-1 text-black">Data Inicial</label>
+          </div>
 
-    <div class="table-responsive" style="width:85%; height: 100% ; left: 15% ; position:absolute;" >
+          <div class="col-md-3 form-floating ">
+            <input type="datetime-local" class="form-control rounded-4"  name="dt_final" required>
+            <label class="m-1">Data Final
+          </div>
+          <div class="col-md-2 form-floating ">
+            <button type="submit" class="btn btn-primary w-50 p-3" >Filtrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+    <div class="table-responsive" style="width:85%; height: 100% ; left: 15% ;top:10%; position:absolute;" >
       <table class="table table table-striped table-secondary">
         <thead>
           <tr>
@@ -56,31 +76,7 @@
       </div>
     </div>
 
-    <div class=" bg-dark" style="width:85%;height:10%; left: 15% ;top:90%; position:absolute;" >
-      
-      <div class="modal-body p-2 ">
-        <form method="post" action="filtar">
-          <div class="row" >
 
-            <div class="col-md-3 form-floating ">
-              <input type="datetime-local" class="form-control rounded-4"  name="dt_inicial" required>
-              <label class="m-1 text-black">Data Inicial</label>
-            </div>
-
-            <div class="col-md-3 form-floating ">
-              <input type="datetime-local" class="form-control rounded-4"  name="dt_final" required>
-              <label class="m-1">Data Final
-            </div>
-            <div class="col-md-2 form-floating ">
-              <button type="submit" class="btn btn-primary w-100 p-3" >Filtrar</button>
-            </div>
-           
-
-          </div>
-        </form>
-
-      </div>
-    </div>
 
 
 
