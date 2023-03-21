@@ -47,7 +47,11 @@ class Producao (Resource):
                 Database.execute(Querys["Add_materiais"],values)
             iteracao+=1
 
-        Unity_Write()
+        for x in range(9):
+            Unity_Write(f"%MW10"+str(x),int(request.json["materiais"][x]))
+
+
+
         return 'Producao iniciada com sucesso',201
     
     #metodo PUT

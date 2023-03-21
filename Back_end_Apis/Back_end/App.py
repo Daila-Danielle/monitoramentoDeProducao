@@ -16,7 +16,8 @@ def M340():
     while True:
         ton1.Ton(5)
         if ton1.Q:
-            Unity_Read()
+            pass
+            #Unity_Read()
 
 
         

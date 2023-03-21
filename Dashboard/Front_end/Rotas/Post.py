@@ -82,6 +82,7 @@ def init_App(App):
 
         mat_id=[3256,5698,6328,4568,9746,3265,9864,9875,6548]
        
+       
         Producao.post_Production(material,mat_id)
 
         return  redirect(url_for('index',formInicioProducao ='none',formFimProducao ='block',status = '1'))
