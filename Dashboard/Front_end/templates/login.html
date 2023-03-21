@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8 " name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Conecta</title>
+    <link rel="stylesheet" href="static/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="p-3 m-0 border-3 bodylogin" style="background-color: #000000; ">
+    <section >
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem; background-color: rgb(255, 255, 255);">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block"> <img
+                                    src="../static/Imagens/tela_login.jpg" alt="login form" class="img-fluid"
+                                    style="border-radius: 1rem 0 0 1rem;" /> </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-white">
+                                    <form method="post" action="logar" style="color: rgb(0, 0, 0);">
+                                        <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Faça login em sua
+                                            conta</h4>
+                                        <div class="form-outline mb-4"> <label class="form-label"
+                                                for="floatingInput">Usuario</label> <input type="text"
+                                                class="form-control rounded-3" id="floatingInput"
+                                                placeholder="Digite seu Usuario" name="nome"> </div>
+                                        <div class="form-outline mb-4"> <label class="form-label"
+                                                for="floatingPassword">Senha</label> <input type="password"
+                                                class="form-control rounded-3" id="floatingPassword"
+                                                placeholder="Digite sua senha" name="senha"> </div>
+                                        <div class="pt-1 mb-4"> <button
+                                                class="w-100 mb-2 mt-2 btn btn-lg rounded-3 btn-primary"
+                                                type="submit">Logar</button> </div>
+                                    </form>
+                                    <center><small class="text-muted"> {% with messages = get_flashed_messages() %} <H5>
+                                                {{ messages[0]}}</H5> {% endwith %} </small></center><br> <a href="#!"
+                                        class="small text-muted ">Relatar problema</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

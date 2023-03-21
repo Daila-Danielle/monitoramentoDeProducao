@@ -1,0 +1,38 @@
+{% extends 'index.html'%}
+
+<div >
+  {% block conteudo %}
+    <div class="table-responsive" style="width:85%; height: 100% ; left: 15% ; position:absolute;" >
+      <table class="table table table-striped table-secondary">
+        <thead>
+          <tr>
+            <th scope="col">Produção</th>
+            <th scope="col">Material</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Tipo</th>
+          </tr>
+        </thead>  
+        <tbody>
+          {%for producao_detalhar in valores %}
+            <tr>
+              <td>{{producao_detalhar["id_prod"]}}</td>
+              <td>{{producao_detalhar["id_mat"]}}</td>
+              <td>{{producao_detalhar["nome"]}}</td>
+              <td>{{producao_detalhar["qtd"]}}</td>
+              <td>{{producao_detalhar["tipo"]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <script> 
+      window.onload = function(){
+      trocaClasse('relatorios','active'); 
+      User_dados_ler()
+    }
+    </script>
+
+  {% endblock %}
+</div>

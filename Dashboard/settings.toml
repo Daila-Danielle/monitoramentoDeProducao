@@ -1,0 +1,7 @@
+[default]
+DEBUG = true
+
+EXTENSIONS = [
+    "Rotas.Get:init_App",
+    "Rotas.Post:init_App", 
+]

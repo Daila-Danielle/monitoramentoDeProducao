@@ -1,0 +1,71 @@
+{% extends 'index.html'%}
+
+<div >
+{% block conteudo %}
+    <section class="py-3 text-center container">
+        <div class="row py-lg-4">
+            <div class="col-lg-3 col-md-8 mx-auto">
+                <h1 class="fw-light">Cadastrar usuario</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal modal-signin position-static d-block py-0" tabindex="-1" role="dialog" id="modalSignin">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+
+                <div class="modal-header p-3 pb-3 ">
+                    <h2 class="fw-bold " style="left: 95px; position: relative;">Tela de cadastro</h2>
+                </div>
+
+                <div class="modal-body">
+                    <form method="post" action="Add_usuario" enctype="multipart/form-data">
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control rounded-5" autocomplete="off" name="nome" required>
+                            <label>nome</label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control rounded-5" autocomplete="off" name="senha" required>
+                            <label>Senha</label>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="form-floating  col-md-6" >
+                                <select name="cargo"class="form-control rounded-5" autocomplete="off" >
+                                    {% for dados in cargos %}
+                                        <option value={{dados[1]}}>{{dados[0]}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label style="left:10px; position: absolute;">Selecione o Cargo</label>
+                            </div>
+                    
+                            <div class="form-floating col-md-6">
+                                <select name="grupo"class="form-control rounded-5"autocomplete="off" >
+                                    {% for dados in grupos %}
+                                        <option value={{dados[1]}}>{{dados[0]}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label style="left:10px; position: absolute;"> Selecione o Grupo</label>
+                            </div>
+                        </div>
+
+                        <div class=" mb-3 ">
+                            <label style="left: 80px; position: relative;" > Selecione uma imagem para o seu perfil </label>
+                            <input type="file" class="form-control rounded-5 mt-1" name="imagem" accept=".png,.jpeg">
+                        </div>
+
+                        <button class="w-100 mb-3 btn btn-lg rounded-5 btn-primary" type="submit">Cadastrar</button> 
+                    </form>       
+                </div>
+            </div>
+        </div>
+
+        <script>
+            trocaClasse('cadastro','active');
+            User_dados_ler()
+        </script>
+    </div>
+
+{% endblock %}
+</div>

@@ -1,0 +1,97 @@
+{% extends 'index.html'%}
+<div >
+  {% block conteudo %}
+
+    <div class="table-responsive" style="width:85%; height: 100% ; left: 15% ; position:absolute;" >
+      <table class="table table table-striped table-secondary">
+        <thead>
+          <tr>
+            <th scope="col">Produção</th>
+            <th scope="col">Total</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Fim</th>
+            <th scope="col">Acões</th>
+            <th scope="col">Acões</th>
+          </tr>
+        </thead>  
+        <tbody >
+          {%for producao in valores %}
+            <tr>
+              <td>{{producao["id_prod"]}}</td> 
+              <td>{{producao["total"]}}</td>
+              <td>{{producao["inicio"]}}</td>
+              <td >{{producao["fim"]}}</td>
+              <td ><button class="w-5 btn btn-sm rounded-2 btn-danger"type="button"onclick="modal_delete_block(this.id)"id='{{producao["id_prod"]}}'>Deletar</button> </td>
+              <td>
+                <form method="get"action="relatorio/detalhar">
+                  <input type="text" name='prod_id'  hidden value='{{producao["id_prod"]}}'>
+                  <button class="w-5 btn btn-sm rounded-2 btn-primary" type="submit">Detalhar Produção</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table> 
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="modal_delete">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Deletar Produção</h3>
+          </div>
+
+          <div class="modal-body">
+            <h5>Tem certeza que deseja deletar a produção:<p id="modal_id" style="align-items:center;"></p><h5>
+            <form method="post" action="delete_producao"id="form_delete">
+              <input type="text" hidden  name='id' id="id_del"> 
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="modal_delete_none()">Fechar</button>
+            <button type="button" class="btn btn-danger" onclick="modal_delete_ok()">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=" bg-dark" style="width:85%;height:10%; left: 15% ;top:90%; position:absolute;" >
+      
+      <div class="modal-body p-2 ">
+        <form method="post" action="filtar">
+          <div class="row" >
+
+            <div class="col-md-3 form-floating ">
+              <input type="datetime-local" class="form-control rounded-4"  name="dt_inicial" required>
+              <label class="m-1 text-black">Data Inicial</label>
+            </div>
+
+            <div class="col-md-3 form-floating ">
+              <input type="datetime-local" class="form-control rounded-4"  name="dt_final" required>
+              <label class="m-1">Data Final
+            </div>
+            <div class="col-md-2 form-floating ">
+              <button type="submit" class="btn btn-primary w-100 p-3" >Filtrar</button>
+            </div>
+           
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+
+
+
+    <script> 
+    window.onload = function(){
+      trocaClasse('relatorios','active'); 
+      User_dados_ler()
+    }
+    </script>
+
+  
+  {% endblock %}
+</div>

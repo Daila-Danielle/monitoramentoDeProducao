@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="/static/script.js"></script>
+        <title>DashBoard</title>
+    </head>
+    <body style="background-color: black; color: rgb(255, 255, 255);">
+        <div class="d-flex flex-column flex-shrink-0 p-1 " style="width: 15%; height: 100% ; position:absolute; background-color: rgba(0, 0, 0, 0.842);">
+            <div style="align-self: center; align-items: center; ">
+              <img src="../static/Imagens/logo.png" alt="" style="width: 220px;">
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a href= "{{url_for('index')}}" class="nav-link text-white "id='inicio'>
+                  <svg class="bi pe-none me-2" width="16" height="16"></svg>
+                  Produçao
+                </a>
+              </li>
+              <li class="nav-item">
+                <a  href= "{{url_for('relatorios')}}" class="nav-link text-white "id='relatorios'>
+                  <svg class="bi pe-none me-2" width="16" height="16"></svg>
+                  Relatorios
+                </a>
+              </li>
+              <li>
+                <a href= "{{url_for('graficos')}}" class="nav-link text-white" id='graficos'>
+                  <svg class="bi pe-none me-2 " width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                  Graficos
+                </a>
+              </li>
+              
+              <li id="adm">
+                <a href= "{{url_for('cadastro_usuario')}}" class="nav-link text-white" id='cadastro'>
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                  Novo usuario
+                </a>
+              </li>
+            
+            </ul>
+            <hr>
+
+            <div class="dropdown" style="width: 15%;position:absolute; top: 92%; left: 1%;">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src=""  width="32" height="32" class="rounded-circle me-2" id="user_img">
+                <strong id="user">
+                  {{user_nome}}
+                </strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Configurações</a></li>
+                <li><a class="dropdown-item" href="/dashboard/perfil">Perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">Sair</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex-column">
+                {% block conteudo %}
+
+                    <div class="modal-body" id="selecionaProducao" style="position:absolute;left:40% ;top: 10%; width:450px ; display:{{formInicioProducao}}; color:black">
+                      <!-- <h5>Selecione os materiais para iniciar a produção</h5> -->
+                      <form method="post" action="dashboard/Inicia_producao" id="form" >
+                        <div class="row">
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"name="mat1" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4" name="mat2" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4" name="mat3" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"  name="mat4" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"  name="mat5" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"  name="mat6" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"  name="mat7" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"  name="mat8" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+
+                          <div class="form-floating  col-md-4 " >
+                            <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 60px;"></center>
+                                <div class="form-floating mb-4 mt-3">
+                                  <input type="number" class="form-control rounded-4"  name="mat9" value="0" min="0" max="10" required>
+                                  <label>Quantidade</label>
+                                </div>
+                          </div>
+                        </div>
+                        <button class="w-100 mb-3 btn btn-lg rounded-4 btn-primary" type="submit" >Iniciar Produção</button>
+                      </form> 
+                    </div> 
+
+                    <div class="table-responsive" id="producao" style="position:absolute;left:60% ;top: 10%; width:550px ; display: {{formFimProducao}}; ">
+                      <h3>Em produção</h3>
+                      <table class="table table table-striped table-secondary">
+                        <thead >
+                          <tr>
+                            <th scope="col">Id produção</th>
+                            <th scope="col">Data e Hora de Inicio</th>
+                            <th scope="col">Ao vivo</th>
+                          </tr>
+                        </thead>  
+                        <tbody >
+                          {%for producao in valores %}
+                            <tr>
+                              <td>{{producao["id_prod"]}}</td> 
+                              <td>{{producao["inicio"]}}</td>
+                              <td >{{producao["fim"]}}</td> 
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table> 
+                      <a href= "{{url_for('finalizar_prod')}}"><button class="w-100 mb-3 btn btn-lg rounded-4 btn-danger" type="button"  >Finalizar Produção</button></a>
+                    </div>
+
+                    <div class="table-responsive" style="position:absolute;left:60% ;top: 45%; width:550px ;display: none;  ">
+                      <h3>Ultimas produções</h3>
+                      <table class="table table table-striped table-secondary">
+                        <thead >
+                          <tr>
+                            <th scope="col">Produção</th>
+                            <th scope="col">Inicio</th>
+                            <th scope="col">Fim</th>
+                          </tr>
+                        </thead>  
+                        <tbody >
+                          {%for producao in valores %}
+                            <tr>
+                              <td>{{producao["id_prod"]}}</td> 
+                              <td>{{producao["inicio"]}}</td>
+                              <td >{{producao["fim"]}}</td> 
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table> 
+                    </div>
+
+
+                <script>
+                  trocaClasse('inicio','active');
+                  User_dados_gavar("{{user_nome}}","{{user_tipo}}","/static/imagens/Perfil/{{img_nome}}");
+                </script>
+                {% endblock %}
+          </div>
+          
+    </body>
+</html>

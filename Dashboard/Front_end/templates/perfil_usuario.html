@@ -1,0 +1,27 @@
+{% extends 'index.html'%}
+<div >
+  {% block conteudo %}
+    <div class="modal-signin col-md-3" role="document" style="position: absolute; left: 45%; top:10% ;">
+      <div class="modal-header p-4 pb-2 ">
+        <h2 class="fw-bold " style="left: 10%; position:relative;">Alterar Cadastro</h2>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="Update_usuario" enctype="multipart/form-data">
+          <div class="form-floating mb-4">
+            <input type="text" class="form-control rounded-5" autocomplete="off" name="nome" required>
+            <label>Nome</label>
+          </div>
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control rounded-5" name="senha" required>
+            <label>Senha</label>
+          </div>
+          <button class="w-100 mb-3 btn btn-lg rounded-5 btn-primary" type="submit">Atualizar Dados</button> 
+        </form>
+      </div>
+    </div>
+    
+    <script>
+      User_dados_ler()
+    </script>
+  {% endblock %}
+</div>
