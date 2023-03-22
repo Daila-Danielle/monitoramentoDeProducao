@@ -18,7 +18,6 @@ class driver:
       
         
 
-
    def Write(self,addr="",dados=0):
        
       if cliente.open():

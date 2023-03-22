@@ -1,6 +1,6 @@
 #blibiotecas
 from M340.Utils.Temporizadores import Timer
-from M340.Main.Unity_com import Unity_Read,Unity_Write
+from M340.Main.Unity_com import Unity_Read
 from flask import Flask
 import threading
 import configuration
