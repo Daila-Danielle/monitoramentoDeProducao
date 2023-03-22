@@ -1,21 +1,21 @@
 {% extends 'index.html'%}
 <div >
   {% block conteudo %}
-  <div class=" bg-dark" style="width:85%;height:5%; left: 15% ;top:0%; position:absolute;" >
+  <div class=" bg-dark" style="position: fixed; width:85%;height:250px; left: 15% ;top:0%; " >
       
     <div class="modal-body p-2 ">
       <form method="post" action="filtar">
         <div class="row" >
-          <div class="col-md-3 form-floating " >
+          <div class="col-md-3 form-floating " style="left: 15%">
             <input type="datetime-local" class="form-control rounded-4"  name="dt_inicial" required>
             <label class="m-1 text-black">Data Inicial</label>
           </div>
 
-          <div class="col-md-3 form-floating ">
+          <div class="col-md-3 form-floating " style="left: 15%">
             <input type="datetime-local" class="form-control rounded-4"  name="dt_final" required>
-            <label class="m-1">Data Final
+            <label class="m-1 text-black" >Data Final
           </div>
-          <div class="col-md-2 form-floating ">
+          <div class="col-md-2 form-floating " style="left: 15%">
             <button type="submit" class="btn btn-primary w-50 p-3" >Filtrar</button>
           </div>
         </div>
