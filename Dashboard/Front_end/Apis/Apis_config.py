@@ -14,7 +14,9 @@ APIServer_Name={
 
     "Producao":"http://127.0.0.1:5001/Producao",
     
-    "Usuario":"http://127.0.0.1:5001/Usuario"
+    "Usuario":"http://127.0.0.1:5001/Usuario",
+
+    "Valores":"http://127.0.0.1:5001/Valores"
 
 
 }

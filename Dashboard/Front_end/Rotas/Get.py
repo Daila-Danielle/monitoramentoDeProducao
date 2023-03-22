@@ -1,7 +1,7 @@
 # blibiotecas
 from flask import render_template,session,url_for,redirect,request
 #importa a API Dados_cadastro e seus metodos
-from Apis import Dados_cadastro,Dados_producao,Dados_producao_detalhar,Producao
+from Apis import Dados_cadastro,Dados_producao,Dados_producao_detalhar,Producao,Valores
 # gera a instancia do app para não causar circular inport
 formInicioProducao = 'block'
 formFimProducao ='none'
@@ -22,7 +22,7 @@ def init_App(App):
             user_dados = session['userdados']
             
             status = request.args.get('status')  
-            caixa = [1]
+            caixa = Valores.get_Valores()
             if status == '1':
                 formInicioProducao= request.args.get('formInicioProducao')
                 formFimProducao= request.args.get('formFimProducao')
