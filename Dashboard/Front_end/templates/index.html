@@ -6,64 +6,98 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="/static/script.js"></script>
         <title>DashBoard</title>
+
+        <script>
+        
+        function toggleTheme() {
+          const body = document.querySelector('body');
+          const button = document.querySelector('#theme-toggle');
+
+          if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            button.textContent = 'Modo noturno';
+          } else {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            button.textContent = 'Modo claro';
+          }
+        }
+
+      </script>
         <style>
           .form-control:disabled{
             background-color: black;
             border: none;
           }
+
+          /* cores para o modo escuro */
+          .dark-mode {
+            background-color: #333;
+            color: #eee;
+          }
+
+          /* cores para o modo claro */
+          .light-mode {
+            background-color: #fff;
+            color: #333;
+          }
+          
         </style>
     </head>
-    <body style="background-color: black; color: rgb(255, 255, 255);">
-        <div class="d-flex flex-column flex-shrink-0 p-1 " style="width: 15%; height: 100% ; position:absolute; background-color: rgba(0, 0, 0, 0.842);">
-            <div style="align-self: center; align-items: center; ">
-              <img src="../static/Imagens/logo.png" alt="" style="width: 220px;">
-            </div>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a href= "{{url_for('index')}}" class="nav-link text-white "id='inicio'>
-                  <svg class="bi pe-none me-2" width="16" height="16"></svg>
-                  Produçao
-                </a>
-              </li>
-              <li class="nav-item">
-                <a  href= "{{url_for('relatorios')}}" class="nav-link text-white "id='relatorios'>
-                  <svg class="bi pe-none me-2" width="16" height="16"></svg>
-                  Relatorios
-                </a>
-              </li>
-              <li>
-                <a href= "{{url_for('graficos')}}" class="nav-link text-white" id='graficos'>
-                  <svg class="bi pe-none me-2 " width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                  Graficos
-                </a>
-              </li>
-              
-              <li id="adm">
-                <a href= "{{url_for('cadastro_usuario')}}" class="nav-link text-white" id='cadastro'>
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                  Novo usuario
-                </a>
-              </li>
-            
-            </ul>
-            <hr>
+<body>
+  <div class="d-flex flex-column flex-shrink-0 p-1" style="width: 15%; height: 100%; position: absolute; background-color: #555;">
+    <div style="align-self: center; align-items: center; ">
+      <img src="../static/Imagens/logo.png" alt="" style="width: 220px;">
+    </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="{{url_for('index')}}" class="nav-link text-white" id="inicio">
+          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          Produção
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('relatorios')}}" class="nav-link text-white" id="relatorios">
+          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          Relatórios
+        </a>
+      </li>
+      <li>
+        <a href="{{url_for('graficos')}}" class="nav-link text-white" id="graficos">
+          <svg class="bi pe-none me-2 " width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Gráficos
+        </a>
+      </li>
 
-            <div class="dropdown" style="width: 15%;position:absolute; top: 92%; left: 1%;">
-              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src=""  width="32" height="32" class="rounded-circle me-2" id="user_img">
-                <strong id="user">
-                  {{user_nome}}
-                </strong>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Configurações</a></li>
-                <li><a class="dropdown-item" href="/dashboard/perfil">Perfil</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/logout">Sair</a></li>
-              </ul>
-            </div>
-          </div>
+      <li id="adm">
+        <a href="{{url_for('cadastro_usuario')}}" class="nav-link text-white" id="cadastro">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Novo usuário
+        </a>
+      </li>
+
+    </ul>
+    <button id="theme-toggle" onclick="toggleTheme()">Mudar tema</button>
+    <br>
+    <hr>
+    <div class="dropdown" style="width: 15%; position: absolute; top: 92%; left: 1%;">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="" width="32" height="32" class="rounded-circle me-2" id="user_img">
+        <strong id="user">
+          {{user_nome}}
+        </strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+        <li><a class="dropdown-item" href="#">Configurações</a></li>
+        <li><a class="dropdown-item" href="/dashboard/perfil">Perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/logout">Sair</a></li>
+      </ul>
+    </div>
+  </div>
+    
 
           <div class="flex-column">
                 {% block conteudo %}

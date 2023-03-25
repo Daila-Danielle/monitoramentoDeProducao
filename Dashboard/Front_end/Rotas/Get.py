@@ -104,7 +104,7 @@ def init_App(App):
 
         if 'username' in session:
             id = request.args.get('prod_id')
-            return render_template('relatorios_detalhar.html',valores=Dados_producao_detalhar.get_dados_producao_detalhar(id))
+            return render_template('relatorios_detalhar.html',valores=Dados_producao_detalhar.get_dados_producao_detalhar(id),valorTotal=Dados_producao.get_Dados_producao("",""))
         else:
             return redirect(url_for('login'))
  
