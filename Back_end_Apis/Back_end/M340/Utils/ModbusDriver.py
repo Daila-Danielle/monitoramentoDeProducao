@@ -1,7 +1,7 @@
 
 from pyModbusTCP.client import ModbusClient
 
-cliente = ModbusClient('10.62.1.70',502,1,1)
+cliente = ModbusClient('10.62.1.70',502,1,2)
 
 class driver:
    

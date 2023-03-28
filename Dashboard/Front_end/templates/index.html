@@ -7,42 +7,8 @@
         <script src="/static/script.js"></script>
         <title>DashBoard</title>
 
-        <script>
-
-          function toggleTheme() {
-            const body = document.querySelector('body');
-            const button = document.querySelector('#theme-toggle');
+      <script>
           
-            if (body.classList.contains('dark-mode')) {
-              body.classList.remove('dark-mode');
-              body.classList.add('light-mode');
-              button.textContent = 'Modo noturno';
-              localStorage.setItem('theme', 'light');
-            } else {
-              body.classList.remove('light-mode');
-              body.classList.add('dark-mode');
-              button.textContent = 'Modo claro';
-              localStorage.setItem('theme', 'dark');
-            }
-          }
-          
-          // Verifica o tema atual ao carregar a página
-          function checkTheme() {
-            const body = document.querySelector('body');
-            const button = document.querySelector('#theme-toggle');
-            const theme = localStorage.getItem('theme');
-            
-            if (theme === 'dark') {
-              body.classList.add('dark-mode');
-              button.textContent = 'Modo claro';
-            } else {
-              body.classList.add('light-mode');
-              button.textContent = 'Modo noturno';
-            }
-          }
-          
-          checkTheme();
-
       </script>
         <style>
           *{
@@ -237,7 +203,7 @@
                       <div class="row">
                         <div class="form-floating  col-md-4 ">
                           <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 80px;"></center>
-                          <center><input  class="form-control" disabled value="1" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input  class="form-control" disabled value="{{caixa[0]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                               
                         </div>
 
@@ -288,7 +254,7 @@
                         </div>
                       </div>
 
-                       <center><h1 style="color: aliceblue;">{{mensagem}}</h1></center>
+                       <center><h1 >{{mensagem}}</h1></center>
                     </div>
 
                     <div style="position:absolute;left:60% ;top: 10%; width:33% ;display: {{ultimasProducao}};  ">
@@ -320,8 +286,10 @@
                 <script>
                   trocaClasse('inicio','active');
                   User_dados_gavar("{{user_nome}}","{{user_tipo}}","/static/imagens/Perfil/{{img_nome}}");
+                  checkTheme();
                 </script>
                 {% endblock %}
+    
         </div>
           
     </body>

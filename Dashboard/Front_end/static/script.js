@@ -61,4 +61,37 @@ function iniciaProducao() {
 }
 
 
+function toggleTheme() {
+    const body = document.querySelector('body');
+    const button = document.querySelector('#theme-toggle');
+  
+    if (body.classList.contains('dark-mode')) {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+      button.textContent = 'Modo noturno';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+      button.textContent = 'Modo claro';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  
+  // Verifica o tema atual ao carregar a página
+  function checkTheme() {
+    const body = document.querySelector('body');
+    const button = document.querySelector('#theme-toggle');
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+      button.textContent = 'Modo claro';
+    } else {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+      button.textContent = 'Modo noturno';
+    }
+  }
+
 
