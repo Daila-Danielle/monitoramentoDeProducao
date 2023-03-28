@@ -203,54 +203,54 @@
                       <div class="row">
                         <div class="form-floating  col-md-4 ">
                           <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 80px;"></center>
-                          <center><input  class="form-control" disabled value="{{caixa[0]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input  class="form-control" disabled value="{{caixa[0]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                               
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 80px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[1]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>      
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[1]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>      
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 80px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[2]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[2]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
     
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 80px;"></center>                        
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[3]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[3]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                                 
                               
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 80px;"></center>                          
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[4]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[4]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
   
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 80px;"></center>                            
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[5]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[5]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
   
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 80px;"></center>                             
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[6]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[6]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
     
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 80px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[7]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[7]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                         </div>
 
                         <div class="form-floating  col-md-4 " >
                           <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 80px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[8]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[8]}}" style="font-size: 35px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                         </div>
                       </div>
 
@@ -268,6 +268,7 @@
                             <th scope="col" class="text-center">Produção</th>
                             <th scope="col" class="text-center">Inicio</th>
                             <th scope="col" class="text-center">Fim</th>
+                            <th scope="col" class="text-center">Ver</th>
                           </tr>
                         </thead>  
                         <tbody>
@@ -276,6 +277,12 @@
                               <td class="text-center">{{ producao["id_prod"] }}</td> 
                               <td class="text-center">{{ producao["inicio"] }}</td>
                               <td class="text-center">{{ producao["fim"] }}</td> 
+                              <td>
+                                <form method="get" action="dashboard/relatorio/detalhar">
+                                  <input type="text" name='prod_id' hidden value='{{producao["id_prod"]}}'>
+                                  <button class="w-50 d-inline-block btn btn-sm rounded-2 btn-light" style=" background-color: transparent;border: none; font-size: 30px;" type="submit">&#128064; </button>
+                                </form>
+                              </td>
                             </tr>
                           {% endfor %}
                         </tbody>
