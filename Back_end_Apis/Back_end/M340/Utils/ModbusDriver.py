@@ -1,7 +1,7 @@
 
 from pyModbusTCP.client import ModbusClient
 
-cliente = ModbusClient('10.62.1.70',502,1,0.1)
+cliente = ModbusClient('10.62.1.70',502,1,1)
 
 class driver:
    
@@ -15,6 +15,7 @@ class driver:
       else:
             cliente.close()
             print("server não encontrado")
+            return "erro"
       
         
 

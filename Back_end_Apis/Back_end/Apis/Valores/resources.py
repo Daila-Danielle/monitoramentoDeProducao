@@ -7,7 +7,12 @@ from M340.Main.Unity_com import Unity_Read
 class valores (Resource):
 
     def get(self,):
-        lista=Unity_Read("%MW300",9)
-        return lista
+        lista = [0,0,0,0,0,0,0,0,0,0]
+        if Unity_Read("%MW203",1) != "erro":
+            lista=Unity_Read("%MW300",9)
+            lista.append(Unity_Read("%MW203",1)[0])
+            return lista
+        else:
+            return lista 
 
  
