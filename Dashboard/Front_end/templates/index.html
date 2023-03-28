@@ -8,72 +8,115 @@
         <title>DashBoard</title>
 
         <script>
-        
-        function toggleTheme() {
-          const body = document.querySelector('body');
-          const button = document.querySelector('#theme-toggle');
 
-          if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode');
-            body.classList.add('light-mode');
-            button.textContent = 'Modo noturno';
-          } else {
-            body.classList.remove('light-mode');
-            body.classList.add('dark-mode');
-            button.textContent = 'Modo claro';
+          function toggleTheme() {
+            const body = document.querySelector('body');
+            const button = document.querySelector('#theme-toggle');
+          
+            if (body.classList.contains('dark-mode')) {
+              body.classList.remove('dark-mode');
+              body.classList.add('light-mode');
+              button.textContent = 'Modo noturno';
+              localStorage.setItem('theme', 'light');
+            } else {
+              body.classList.remove('light-mode');
+              body.classList.add('dark-mode');
+              button.textContent = 'Modo claro';
+              localStorage.setItem('theme', 'dark');
+            }
           }
-        }
+          
+          // Verifica o tema atual ao carregar a página
+          function checkTheme() {
+            const body = document.querySelector('body');
+            const button = document.querySelector('#theme-toggle');
+            const theme = localStorage.getItem('theme');
+            
+            if (theme === 'dark') {
+              body.classList.add('dark-mode');
+              button.textContent = 'Modo claro';
+            } else {
+              body.classList.add('light-mode');
+              button.textContent = 'Modo noturno';
+            }
+          }
+          
+          checkTheme();
 
       </script>
         <style>
-          .form-control:disabled{
-            background-color: black;
-            border: none;
+          *{
+            font-size: 17px;
           }
+          .table {
+            background-color: transparent !important;
+            color: inherit;
+          }
+          .form-control:disabled{
+            background-color: transparent;
+            border: none;
+            color: inherit;
+          }
+          
 
           /* cores para o modo escuro */
           .dark-mode {
-            background-color: #333;
-            color: #eee;
+            background-image: url("https://t4.ftcdn.net/jpg/04/21/43/95/360_F_421439576_zzg0kGw1QZ6S6WDAS4qgglRPP4wxddjS.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fffafa;
           }
 
           /* cores para o modo claro */
           .light-mode {
-            background-color: #fff;
-            color: #333;
+            background-image: url("https://img.freepik.com/vetores-gratis/vetor-de-fundo-de-padrao-geometrico-branco-e-cinza_53876-136510.jpg?w=1060&t=st=1679760825~exp=1679761425~hmac=4973c550a9ea663a67559a785fb41c2fb9dd34bf298c7b74cb71fe3495834397");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #000000;
+          }
+          #theme-toggle {
+            margin-top: 20px;
+            margin-bottom: 10px;
+          }
+          .nav-link.active {
+              color: black !important;
+              background-color: rgba(151, 221, 246, 0.843) !important;
           }
           
         </style>
     </head>
-<body>
-  <div class="d-flex flex-column flex-shrink-0 p-1" style="width: 15%; height: 100%; position: absolute; background-color: #555;">
+<body class="light-mode">
+  <div class="d-flex flex-column flex-shrink-0 p-1 ligth" style="width: 15%; height:100%; position: absolute; background-color: #122165aa;">
     <div style="align-self: center; align-items: center; ">
-      <img src="../static/Imagens/logo.png" alt="" style="width: 220px;">
+      <img src="../static/Imagens/logo.png" alt="" style=" position:absolute; width: 95%;top:1%; left: 3%;">
     </div>
+    <br>
+    <br>
+    <br>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a href="{{url_for('index')}}" class="nav-link text-white" id="inicio">
-          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          <svg class="bi pe-none" width="1" height="1"></svg>
           Produção
         </a>
       </li>
       <li class="nav-item">
         <a href="{{url_for('relatorios')}}" class="nav-link text-white" id="relatorios">
-          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          <svg class="bi pe-none" width="1" height="1"></svg>
           Relatórios
         </a>
       </li>
       <li>
         <a href="{{url_for('graficos')}}" class="nav-link text-white" id="graficos">
-          <svg class="bi pe-none me-2 " width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          <svg class="bi pe-none " width="1" height="1"><use xlink:href="#speedometer2"></use></svg>
           Gráficos
         </a>
       </li>
 
       <li id="adm">
         <a href="{{url_for('cadastro_usuario')}}" class="nav-link text-white" id="cadastro">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          <svg class="bi pe-none " width="1" height="1"><use xlink:href="#table"></use></svg>
           Novo usuário
         </a>
       </li>
@@ -102,12 +145,12 @@
           <div class="flex-column">
                 {% block conteudo %}
 
-                    <div class="modal-body" id="selecionaProducao" style="position:absolute;left:20% ;top: 10%; width:450px ; display:{{formInicioProducao}}; color:black">
+                    <div class="modal-body" id="selecionaProducao" style="position:absolute;left:20% ;top: 12%; width:34% ; display:{{formInicioProducao}}; color:black">
                       <!-- <h5>Selecione os materiais para iniciar a produção</h5> -->
                       <form method="post" action="dashboard/Inicia_producao" id="form" >
                         <div class="row">
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"name="mat1" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -115,7 +158,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4" name="mat2" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -123,7 +166,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4" name="mat3" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -131,7 +174,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"  name="mat4" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -139,7 +182,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"  name="mat5" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -147,7 +190,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"  name="mat6" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -155,7 +198,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"  name="mat7" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -163,7 +206,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"  name="mat8" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -171,7 +214,7 @@
                           </div>
 
                           <div class="form-floating  col-md-4 " >
-                            <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 60px;"></center>
+                            <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 80px;"></center>
                                 <div class="form-floating mb-4 mt-3">
                                   <input type="number" class="form-control rounded-4"  name="mat9" value="0" min="0" max="10" required>
                                   <label>Quantidade</label>
@@ -182,83 +225,88 @@
                       </form> 
                     </div> 
 
-                    <div class="modal-body" id="producao" style="position:absolute;left:40% ;top: 6%; width:450px ; display: {{formFimProducao}}; color:black ">
-                      <center><h2 style="color: aliceblue;">Em produção</h2></center>
+
+                    <div class="modal-body" id="producao" style="position:absolute;left:38% ;top: 5%; width:40% ; display: {{formFimProducao}};">
+                      <center><h2 style="font-family: 'Helvetica Neue', sans-serif; font-weight: bold; text-align: center; text-transform: uppercase; letter-spacing: 2px;">Em Produção</h2>
+                      </center>
+                      <br>
                       <br>
                       <div class="row">
-                        <div class="form-floating  col-md-4 " style="background-color: black" >
-                          <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 60px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[0]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                        <div class="form-floating  col-md-4 ">
+                          <center><img src="../static/Imagens/producao/Base_metal.png" alt="base metal" style="width: 80px;"></center>
+                          <center><input  class="form-control" disabled value="1" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                               
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 60px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[1]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>      
+                          <center><img src="../static/Imagens/producao/Base_azul.png" alt="base metal" style="width: 80px;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[1]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>      
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 60px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[2]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/Base_verde.png" alt="base metal" style="width: 80px;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[2]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
     
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 60px;"></center>                        
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[3]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/Tampa_metal.png" alt="base metal" style="width: 80px;"></center>                        
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[3]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                                 
                               
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 60px;"></center>                          
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[4]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/Tampa_azul.png" alt="base metal" style="width: 80px;"></center>                          
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[4]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
   
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 60px;"></center>                            
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[5]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/Tampa_verde.png" alt="base metal" style="width: 80px;"></center>                            
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[5]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
   
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 60px;"></center>                             
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[6]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/caixa_metal.png" alt="base metal" style="width: 80px;"></center>                             
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[6]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
     
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 60px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[7]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/caixa_azul.png" alt="base metal" style="width: 80px;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[7]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                         </div>
 
                         <div class="form-floating  col-md-4 " >
-                          <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 60px;"></center>
-                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[8]}}" style="font-size: 35px; align-items: center; align-self: center; color: aliceblue; width: 80px;"></center>
+                          <center><img src="../static/Imagens/producao/caixa_verde.png" alt="base metal" style="width: 80px;"></center>
+                          <center><input type="number" class="form-control rounded-4" disabled value="{{caixa[8]}}" style="font-size: 40px;text-align: center; width: 80px;margin-bottom: 10%;"></center>
                         </div>
                       </div>
 
                       <a href= "{{url_for('finalizar_prod')}}"><button class="w-100 mb-3 btn btn-lg rounded-4 btn-danger" type="button"  >Finalizar Produção</button></a>
                     </div>
 
-                    <div class="table-responsive"  style="position:absolute;left:60% ;top: 10%; width:550px ;display: {{ultimasProducao}};  ">
-                      <center><h3>Ultimas produções</h3></center>
+                    <div style="position:absolute;left:60% ;top: 10%; width:33% ;display: {{ultimasProducao}};  ">
+                      <center><h4 style="font-family: 'Helvetica Neue', sans-serif; font-weight: bold; text-align: center; text-transform: uppercase; letter-spacing: 2px;">Produzidos recentemente</h4>
+                      </center>
                       <br>
-                      <table class="table table table-striped table-secondary">
-                        <thead >
+                      
+                      <table class="table">
+                        <thead style="background-color: rgba(127, 202, 255, 0.607);">
                           <tr>
-                            <th scope="col">Produção</th>
-                            <th scope="col">Inicio</th>
-                            <th scope="col">Fim</th>
+                            <th scope="col" class="text-center">Produção</th>
+                            <th scope="col" class="text-center">Inicio</th>
+                            <th scope="col" class="text-center">Fim</th>
                           </tr>
                         </thead>  
-                        <tbody >
-                          {%for producao in valores %}
+                        <tbody>
+                          {% for producao in valores %}
                             <tr>
-                              <td>{{producao["id_prod"]}}</td> 
-                              <td>{{producao["inicio"]}}</td>
-                              <td >{{producao["fim"]}}</td> 
+                              <td class="text-center">{{ producao["id_prod"] }}</td> 
+                              <td class="text-center">{{ producao["inicio"] }}</td>
+                              <td class="text-center">{{ producao["fim"] }}</td> 
                             </tr>
                           {% endfor %}
                         </tbody>
@@ -271,7 +319,7 @@
                   User_dados_gavar("{{user_nome}}","{{user_tipo}}","/static/imagens/Perfil/{{img_nome}}");
                 </script>
                 {% endblock %}
-          </div>
+        </div>
           
     </body>
 </html>
