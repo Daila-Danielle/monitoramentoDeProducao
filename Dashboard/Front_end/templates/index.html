@@ -227,6 +227,9 @@
 
 
                     <div class="modal-body" id="producao" style="position:absolute;left:38% ;top: 5%; width:40% ; display: {{formFimProducao}};">
+                     {% if formFimProducao == "block" and mensagem == "" %}
+                        <meta http-equiv="refresh" content="3;">
+                      {% endif %}
                       <center><h2 style="font-family: 'Helvetica Neue', sans-serif; font-weight: bold; text-align: center; text-transform: uppercase; letter-spacing: 2px;">Em Produção</h2>
                       </center>
                       <br>
@@ -285,7 +288,7 @@
                         </div>
                       </div>
 
-                      <a href= "{{url_for('finalizar_prod')}}"><button class="w-100 mb-3 btn btn-lg rounded-4 btn-danger" type="button"  >Finalizar Produção</button></a>
+                       <center><h1 style="color: aliceblue;">{{mensagem}}</h1></center>
                     </div>
 
                     <div style="position:absolute;left:60% ;top: 10%; width:33% ;display: {{ultimasProducao}};  ">
