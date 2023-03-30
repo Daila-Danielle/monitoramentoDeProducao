@@ -6,6 +6,7 @@ import os
 import bcrypt
 #importa as APIs Usuarios,Login e seus metodos
 from Apis import Usuarios,Login,Producao,Dados_producao
+from datetime import datetime
 
 #gera chave para cryptografia
 chave = bcrypt.gensalt()

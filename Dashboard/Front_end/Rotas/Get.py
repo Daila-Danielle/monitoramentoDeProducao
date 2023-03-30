@@ -2,11 +2,13 @@
 from flask import render_template,session,url_for,redirect,request
 #importa a API Dados_cadastro e seus metodos
 from Apis import Dados_cadastro,Dados_producao,Dados_producao_detalhar,Producao,Valores
+from datetime import datetime
 # gera a instancia do app para não causar circular inport
 formInicioProducao = 'block'
 formFimProducao ='none'
 ultimasProducao = 'block'
 def init_App(App):
+
 
 #rotas tipo GET
 #rota pagina de Login

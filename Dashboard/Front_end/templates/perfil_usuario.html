@@ -1,24 +1,35 @@
 {% extends 'index.html'%}
 <div >
   {% block conteudo %}
-    <div class="modal-signin col-md-3" role="document" style="position: absolute; left: 45%; top:10% ;">
-      <div class="modal-header p-4 pb-2 ">
-        <h2 class="fw-bold " style="left: 10%; position:relative;">Alterar Cadastro</h2>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="Update_usuario" enctype="multipart/form-data">
-          <div class="form-floating mb-4">
-            <input type="text" class="form-control rounded-5" autocomplete="off" name="nome" required>
-            <label>Nome</label>
+
+  <div class="modal-signin col-md-3" role="document" style="position: absolute; left: 40%; top: 12%; width: 40%;">
+    <center><h2 class="modal-title fw-bold">Alterar Cadastro</h2></center>
+    <br>
+    <form method="post" action="Update_usuario" enctype="multipart/form-data">
+      <div class="row">
+       
+          <div class="mb-3">
+              <label for="nome" class="form-label" style="font-size: 1.2em;">Novo nome</label>
+              <input type="text" class="form-control form-control-lg" id="nome" placeholder="Digite o nome de usuário" autocomplete="off" name="nome" required>
+          </div>         
+          <div class="mb-3">
+              <label for="senha" class="form-label" style="font-size: 1.2em;">Nova senha</label>
+              <input type="password" class="form-control form-control-lg" id="senha" placeholder="Digite a senha" autocomplete="off" name="senha" required>
           </div>
-          <div class="form-floating mb-4">
-            <input type="password" class="form-control rounded-5" name="senha" required>
-            <label>Senha</label>
+            <div class="mb-3">
+            <label for="foto" class="form-label" style="font-size: 1.2em;">Foto</label>
+            <input class="form-control form-control-lg" type="file" name="imagem" accept=".png,.jpeg">
           </div>
-          <button class="w-100 mb-3 btn btn-lg rounded-5 btn-primary" type="submit">Atualizar Dados</button> 
-        </form>
+        <br>
+        <br>
+          <div class="modal-footer">
+            <button class="btn btn-primary btn-lg btn-rounded w-100 mt-3" type="submit">Atualizar Dados</button>
+          </div>
       </div>
-    </div>
+    </form> 
+  </div>
+
+
     
     <script>
       User_dados_ler()
