@@ -1,7 +1,7 @@
 {
     "Setings": {
         "MySQL": {
-            "host": "127.0.0.1",
+            "host": "10.62.1.128",
             "user": "conectadb",
             "password": "HT-SIS-002conecta",
             "database": "projeto",

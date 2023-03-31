@@ -12,4 +12,4 @@ configuration.secretkey(App)
 configuration.load_extensions(App)
 
 #inicia o aplicativo
-App.run()  
+App.run(host="0.0.0.0")  

@@ -10,7 +10,14 @@ class valores (Resource):
         lista = [0,0,0,0,0,0,0,0,0,0]
         if Unity_Read("%MW203",1) != "erro":
             lista=Unity_Read("%MW300",9)
-            lista.append(Unity_Read("%MW203",1)[0])
+            status = Unity_Read("%MW203",1)[0]
+
+            if status != "erro":
+                lista.append(status)
+            else:
+                lista.append(0)
+
+
             return lista
         else:
             return lista 

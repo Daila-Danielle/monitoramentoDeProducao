@@ -98,7 +98,7 @@ def init_App(App):
         return  redirect(url_for('relatorios'))
     
 
-    @App.route('/dashboard/filtar',methods=["POST"])
+    @App.route('/dashboard/filtrar',methods=["POST"])
     def filtar_producao():
 
         dt_inicial = request.form['dt_inicial']
