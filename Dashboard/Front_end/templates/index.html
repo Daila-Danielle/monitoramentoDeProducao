@@ -23,6 +23,14 @@
             border: none;
             color: inherit;
           }
+          .card {
+            background-color: transparent !important;
+            color: inherit;
+          }
+          label{
+            color: inherit;
+          }
+          
           
 
           /* cores para o modo escuro */
@@ -48,11 +56,40 @@
               color: black !important;
               background-color: rgba(151, 221, 246, 0.843) !important;
           }
+          .btn-effect {
+            display: inline-block;
+            padding: 12px 28px;
+            border: none;
+            background-color: rgba(65, 160, 11, 0.829);
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-out;
+          }
+
+          .btn-effect:hover {
+            background-color: #099627dc;
+          }
+
+          .btnTeme{
+            background-color: rgba(156, 182, 255, 0.801);
+            border: none;
+            color: #212529;
+            transition: color 0.2s ease-in-out;
+          }
+
+          .btnTeme:hover {
+            background-color: rgba(62, 68, 53, 0.801);
+            color: #ffffff;
+          }
+          
           
         </style>
     </head>
 <body class="light-mode">
-  <div class="d-flex flex-column flex-shrink-0 p-1 ligth" style="width: 15%; height:100%; position: absolute; background-color: #122165aa;">
+  <div class="d-flex flex-column flex-shrink-0 p-1 ligth" style="width: 16%; height:100%; position: absolute; background-color: #4402ae90;">
     <div style="align-self: center; align-items: center; ">
       <img src="../static/Imagens/logo.png" alt="" style=" position:absolute; width: 95%;top:1%; left: 3%;">
     </div>
@@ -88,7 +125,9 @@
       </li>
 
     </ul>
-    <button id="theme-toggle" onclick="toggleTheme()">Mudar tema</button>
+    <button id="theme-toggle" onclick="toggleTheme()" class="w-100 d-inline-block btn btn-sm rounded-2  btnTeme" >
+      Mudar tema
+    </button>
     <br>
     <hr>
     <div class="dropdown" style="width: 15%; position: absolute; top: 92%; left: 1%;">
@@ -187,7 +226,7 @@
                                 </div>
                           </div>
                         </div>
-                        <button class="w-100 mb-3 btn btn-lg rounded-4 btn-primary" type="submit" >Iniciar Produção</button>
+                        <button class="w-100 mb-3 btn btn-lg rounded-4 btn-effect" type="submit"  >Iniciar Produção</button>
                       </form> 
                     </div> 
 
@@ -263,7 +302,7 @@
                       <br>
                       
                       <table class="table">
-                        <thead style="background-color: rgba(127, 202, 255, 0.607);">
+                        <thead style="background-color: rgba(197, 131, 252, 0.671);">
                           <tr>
                             <th scope="col" class="text-center">Produção</th>
                             <th scope="col" class="text-center">Inicio</th>

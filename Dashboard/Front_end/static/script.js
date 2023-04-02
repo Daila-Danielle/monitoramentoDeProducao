@@ -68,12 +68,10 @@ function toggleTheme() {
     if (body.classList.contains('dark-mode')) {
       body.classList.remove('dark-mode');
       body.classList.add('light-mode');
-      button.textContent = 'Modo noturno';
       localStorage.setItem('theme', 'light');
     } else {
       body.classList.remove('light-mode');
       body.classList.add('dark-mode');
-      button.textContent = 'Modo claro';
       localStorage.setItem('theme', 'dark');
     }
   }
@@ -86,11 +84,9 @@ function toggleTheme() {
     if (theme === 'dark') {
       body.classList.remove('light-mode');
       body.classList.add('dark-mode');
-      button.textContent = 'Modo claro';
     } else {
       body.classList.remove('dark-mode');
       body.classList.add('light-mode');
-      button.textContent = 'Modo noturno';
     }
   }
 function confirmaSenha() {
