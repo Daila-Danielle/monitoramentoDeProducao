@@ -62,33 +62,40 @@ function iniciaProducao() {
 
 
 function toggleTheme() {
-    const body = document.querySelector('body');
-    const button = document.querySelector('#theme-toggle');
-  
-    if (body.classList.contains('dark-mode')) {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    } else {
-      body.classList.remove('light-mode');
-      body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    }
+  const body = document.querySelector('body');
+  const button = document.querySelector('#theme-toggle');
+
+  if (body.classList.contains('dark-mode')) {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light'); 
+    button.style.backgroundColor = '#1C1C1E';
+    button.textContent = 'Modo noturno';
+  } else {
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+    button.style.backgroundColor = '#ad51d1b6';
+    button.textContent = 'Modo claro';
   }
-  
-  // Verifica o tema atual ao carregar a página
-  function checkTheme() {
-    const body = document.querySelector('body');
-    const button = document.querySelector('#theme-toggle');
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      body.classList.remove('light-mode');
-      body.classList.add('dark-mode');
-    } else {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-mode');
-    }
+}
+
+// Verifica o tema atual ao carregar a página
+function checkTheme() {
+  const body = document.querySelector('body');
+  const button = document.querySelector('#theme-toggle');
+  const theme = localStorage.getItem('theme');
+  if (theme === 'dark') {
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+    button.style.backgroundColor = '#1C1C1E';
+  } else {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    button.style.backgroundColor = '#ad51d1b6';
   }
+}
+
 function confirmaSenha() {
   var senha = document.getElementById("senha").value;
   var confirmacaoSenha = document.getElementById("confirmar-senha").value;

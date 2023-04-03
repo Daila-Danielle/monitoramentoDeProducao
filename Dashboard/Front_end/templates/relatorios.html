@@ -3,31 +3,32 @@
   {% block conteudo %}
   <div style="position: absolute; left: 16.5%; top: 1%; width:82%;">
           <div class="card">
-            <div class="card-header bg-dark text-white">
+            <div class="card-header  text-white" style="background-color: #4402ae90;">
               Filtrar Produções
             </div>
             <div class="card-body">
               <form method="post" action="filtrar">
                 <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="dt-inicial" class="form-label text-black">Data Inicial</label>
+                  <div class="col-md-5">
+                    <label for="dt-inicial" class="form-label ">Data Inicial</label>
                     <input type="datetime-local" class="form-control rounded-4" id="dt-inicial" name="dt_inicial" required>
                   </div>
-                  <div class="col-md-6">
-                    <label for="dt-final" class="form-label text-black">Data Final</label>
+                  <div class="col-md-5">
+                    <label for="dt-final" class="form-label ">Data Final</label>
                     <input type="datetime-local" class="form-control rounded-4" id="dt-final" name="dt_final" required>
                   </div>
+                  <div class="col-md-2" style="position: absolute;left: 86.5%; top: 55%;">
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                  </div>
                 </div>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                  <button type="submit" class="btn btn-primary btn-lg">Filtrar</button>
-                </div>
+
               </form>
             </div>
           </div>
   </div>
   <div style="position: absolute; left: 16.5%; top: 37%; width:82%; height:63%;">      
           <div class="card">
-            <div class="card-header bg-dark text-white">
+            <div class="card-header  text-white" style="background-color: #4402ae90;"> 
               Lista de Produções
             </div>
             <div class="card-body">
@@ -78,7 +79,7 @@
           </div>
 
           <div class="modal-body">
-            <h5>Tem certeza que deseja deletar a produção:<p id="modal_id" style="align-items:center;"></p><h5>
+            <h5>Deseja realmente deletar a produção:<p id="modal_id" style="align-items:center;"></p><h5>
             <form method="post" action="delete_producao"id="form_delete">
               <input type="text" hidden  name='id' id="id_del"> 
             </form>

@@ -14,6 +14,10 @@
           *{
             font-size: 17px;
           }
+          .modal-content{
+            background-color: #222222ec;
+            color: #fff;
+          }
           .table {
             background-color: transparent !important;
             color: inherit;
@@ -40,7 +44,6 @@
             background-size: cover;
             color: #fffafa;
           }
-
           /* cores para o modo claro */
           .light-mode {
             background-image: url("https://img.freepik.com/vetores-gratis/vetor-de-fundo-de-padrao-geometrico-branco-e-cinza_53876-136510.jpg?w=1060&t=st=1679760825~exp=1679761425~hmac=4973c550a9ea663a67559a785fb41c2fb9dd34bf298c7b74cb71fe3495834397");
@@ -73,17 +76,7 @@
             background-color: #099627dc;
           }
 
-          .btnTeme{
-            background-color: rgba(156, 182, 255, 0.801);
-            border: none;
-            color: #212529;
-            transition: color 0.2s ease-in-out;
-          }
 
-          .btnTeme:hover {
-            background-color: rgba(62, 68, 53, 0.801);
-            color: #ffffff;
-          }
           
           
         </style>
@@ -110,12 +103,12 @@
           Relatórios
         </a>
       </li>
-      <li>
+<!--       <li>
         <a href="{{url_for('graficos')}}" class="nav-link text-white" id="graficos">
           <svg class="bi pe-none " width="1" height="1"><use xlink:href="#speedometer2"></use></svg>
           Gráficos
         </a>
-      </li>
+      </li> -->
 
       <li id="adm">
         <a href="{{url_for('cadastro_usuario')}}" class="nav-link text-white" id="cadastro">
@@ -125,7 +118,7 @@
       </li>
 
     </ul>
-    <button id="theme-toggle" onclick="toggleTheme()" class="w-100 d-inline-block btn btn-sm rounded-2  btnTeme" >
+    <button id="theme-toggle" onclick="toggleTheme()" class="rounded-2" style="color: #fffafa;">
       Mudar tema
     </button>
     <br>
