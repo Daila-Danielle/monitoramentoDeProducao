@@ -26,7 +26,7 @@
             </div>
           </div>
   </div>
-  <div style="position: absolute; left: 16.5%; top: 37%; width:82%; height:63%;">      
+  <div style="position: absolute; left: 16.5%; top: 30%; width:82%; height:63%;">      
           <div class="card">
             <div class="card-header  text-white" style="background-color: #4402ae90;"> 
               Lista de Produções
@@ -48,8 +48,8 @@
                       <tr>
                         <td>{{ producao["id_prod"] }}</td> 
                         <td>{{ producao["total"] }}</td>
-                        <td>{{ producao["inicio"] }}</td>
-                        <td>{{ producao["fim"] }}</td>
+                        <td>{{ producao["inicio"] |to_date }}</td>
+                        <td>{{ producao["fim"] |to_date }}</td>
                         <td>
                           <div class="d-flex justify-content-center">
                             <button class="btn btn-danger me-2" type="button" onclick="modal_delete_block(this.id)" id="{{ producao['id_prod'] }}">Deletar</button>

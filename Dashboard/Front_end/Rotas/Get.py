@@ -3,6 +3,7 @@ from flask import render_template,session,url_for,redirect,request
 #importa a API Dados_cadastro e seus metodos
 from Apis import Dados_cadastro,Dados_producao,Dados_producao_detalhar,Producao,Valores
 from datetime import datetime
+
 # gera a instancia do app para não causar circular inport
 formInicioProducao = 'block'
 formFimProducao ='none'
@@ -115,3 +116,9 @@ def init_App(App):
         else:
             return redirect(url_for('login'))
  
+    @App.template_filter('to_date')
+    def format_datetime(value):
+        if value == 'None':
+            return '-'
+        dt = datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
+        return dt.strftime("%d/%m/%Y %H:%M:%S" )

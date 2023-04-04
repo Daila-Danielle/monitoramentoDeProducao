@@ -35,7 +35,10 @@
             color: inherit;
           }
           
-          
+          .table-responsive {
+            max-height: 500px;
+            overflow-y: auto;
+          }
 
           /* cores para o modo escuro */
           .dark-mode {
@@ -43,6 +46,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             color: #fffafa;
+            height: 100vh;
           }
           /* cores para o modo claro */
           .light-mode {
@@ -81,7 +85,7 @@
           
         </style>
     </head>
-<body class="light-mode">
+<body class="light-mode" style="overflow:hidden">
   <div class="d-flex flex-column flex-shrink-0 p-1 ligth" style="width: 16%; height:100%; position: absolute; background-color: #4402ae90;">
     <div style="align-self: center; align-items: center; ">
       <img src="../static/Imagens/logo.png" alt="" style=" position:absolute; width: 95%;top:1%; left: 3%;">
@@ -307,8 +311,8 @@
                           {% for producao in valores %}
                             <tr>
                               <td class="text-center">{{ producao["id_prod"] }}</td> 
-                              <td class="text-center">{{ producao["inicio"] }}</td>
-                              <td class="text-center">{{ producao["fim"] }}</td> 
+                              <td class="text-center">{{ producao["inicio"]|to_date }}</td>
+                              <td class="text-center">{{ producao["fim"]|to_date }}</td> 
                               <td>
                                 <form method="get" action="dashboard/relatorio/detalhar">
                                   <input type="text" name='prod_id' hidden value='{{producao["id_prod"]}}'>
